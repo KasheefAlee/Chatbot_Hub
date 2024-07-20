@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Main Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-image: url('background.jpeg');
+            background-size: cover;
+            background-position: center;
+            color: #fff;
+        }
+        .container {
+            background: rgba(0, 0, 0, 0.5); /* Semi-transparent background for readability */
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            width: 100%;
+        }
+        h1 {
+            color: #ffffff;
+            margin-bottom: 30px;
+        }
+        .button-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .button {
+            display: inline-block;
+            padding: 15px 30px;
+            font-size: 18px;
+            margin: 10px;
+            color: #fff;
+            background-color: #343a40; /* Darker color */
+            border: none;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+        .button:hover {
+            background-color: #ffffff; /* Light color on hover */
+            color: #343a40; /* Text color changes to match the background color */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>   Welcome to Kashif's Chatbot Hub</h1>
+        <div class="button-container">
+            <a href="http://127.0.0.1:8080" class="button">Friendly Chatbot</a>
+            <a href="http://127.0.0.1:9090/" class="button">PDF Q&A Chatbot</a>
+            <a href="http://127.0.0.1:6060/" class="button">Sentimental Analysis</a>
+        </div>
+    </div>
+</body>
+</html>

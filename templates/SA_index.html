@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sentiment Analysis</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('{{ url_for("static", filename="background.jpeg") }}');
+            background-size: cover;
+            background-position: center;
+            color: #fff;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            background: rgba(0, 0, 0, 0.5); /* Semi-transparent background for readability */
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 90%;
+            max-width: 600px;
+            text-align: center;
+        }
+        h1 {
+            color: #ffffff;
+            margin-bottom: 20px;
+        }
+        textarea {
+            width: calc(100% - 20px);
+            padding: 10px;
+            border: 1px solid #ffffff;
+            border-radius: 6px;
+            resize: vertical;
+            font-size: 16px;
+            margin-bottom: 20px;
+            background-color: #ffffff; /* Light background for the textarea */
+            color: #000000; /* Dark text color for readability */
+        }
+        button {
+            background-color: #000000;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #004d40; /* Teal color on hover */
+        }
+        .result {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 6px;
+            background: #f1f8e9;
+            color: #004d40;
+            border: 1px solid #004d40;
+            white-space: pre-wrap; /* Preserves formatting */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Sentiment Analysis</h1>
+        <textarea id="text-input" rows="6" placeholder="Enter text here..."></textarea>
+        <br>
+        <button onclick="analyzeSentiment()">Analyze Sentiment</button>
+        <div class="result" id="result"></div>
+    </div>
+
+    <script>
+        async function analyzeSentiment() {
+            const text = document.getElementById('text-input').value;
+            const response = await fetch('/analyze_sentiment', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ text: text })
+            });
+            const data = await response.json();
+            document.getElementById('result').innerText = `Sentiment: ${data.sentiment}\nProbabilities: ${data.probabilities}`;
+        }
+    </script>
+</body>
+</html>
